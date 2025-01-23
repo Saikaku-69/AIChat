@@ -11,7 +11,6 @@
 		7F1DF79B2D4072F800FD4BDF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF79A2D4072F800FD4BDF /* ContentView.swift */; };
 		7F1DF79D2D4072FD00FD4BDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1DF79C2D4072FD00FD4BDF /* Assets.xcassets */; };
 		7F1DF7A02D4072FD00FD4BDF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1DF79F2D4072FD00FD4BDF /* Preview Assets.xcassets */; };
-		7F1DF7A82D407B9C00FD4BDF /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F1DF7A72D407B9C00FD4BDF /* OpenAISwift */; };
 		7F1DF7AD2D407BFB00FD4BDF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7AC2D407BFB00FD4BDF /* Message.swift */; };
 		7F1DF7AF2D407C6700FD4BDF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7AE2D407C6700FD4BDF /* ChatViewModel.swift */; };
 		7F1DF7B12D40838A00FD4BDF /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7B02D40838A00FD4BDF /* MessageView.swift */; };
@@ -41,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F1DF7A82D407B9C00FD4BDF /* OpenAISwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +137,6 @@
 			);
 			name = AIChat;
 			packageProductDependencies = (
-				7F1DF7A72D407B9C00FD4BDF /* OpenAISwift */,
 			);
 			productName = AIChat;
 			productReference = 7F1DF7952D4072F800FD4BDF /* AIChat.app */;
@@ -423,14 +420,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7F1DF7A72D407B9C00FD4BDF /* OpenAISwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F1DF7A62D407B9C00FD4BDF /* XCRemoteSwiftPackageReference "OpenAISwift" */;
-			productName = OpenAISwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7F1DF78D2D4072F800FD4BDF /* Project object */;
 }
