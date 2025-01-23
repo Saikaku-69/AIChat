@@ -6,41 +6,42 @@
 //
 
 import Foundation
-import OpenAISwift
+import Combine
 
 class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var inputText: String = ""
-    private var client: OpenAISwift?
+    private var client: OpenAIAPICaller?
     
     init() {
-        if let apiKey = PlistManager.shared.getValue(forKey: "apiKey", fromPlist: "Config") as? String {
-            client = OpenAISwift(config: OpenAISwift.Config.makeDefaultOpenAI(apiKey: apiKey))
+        if PlistManager.shared.getValue(forKey: "apiKey", fromPlist: "Config") is String {
+            client = OpenAIAPICaller()
         } else {
             print("Failed")
-            client = OpenAISwift(config: OpenAISwift.Config.makeDefaultOpenAI(apiKey: ""))
+            client = nil
         }
     }
     
-    func sendMessage(_ content: String) {
-        let userMessage = Message(content: content, isUser: true)
-        messages.append(userMessage)
-        //OpenAIクライアントに発送 //.gpt3(.davinci)はAIモデル。
-        client?.sendCompletion(with: content, model: .gpt3(.davinci), maxTokens: 100) { result in
-            switch result {
-            case .success(let success):
-                print("API Test: \(success)")
-                //メインスレッドで進行するため
-                DispatchQueue.main.async {
-                    let aiMessage = Message(content: success.choices?.first?.text ?? "", isUser: false)
-                    self.messages.append(aiMessage)
+    func sendMessage() {
+        guard !inputText.isEmpty, let client = client else { return }
+        
+        let newMessage = Message(content: inputText, isUser: true)
+        messages.append(newMessage)
+        
+        client.fetchResponse(prompt: inputText) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    if let content = response.choices.first?.message.content {
+                        let aiMessage = Message(content: content, isUser: false)
+                        self?.messages.append(aiMessage)
+                    }
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    // 可以在这里添加错误处理逻辑
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
+                self?.inputText = ""
             }
-        }
-        if client == nil {
-            print("OpenAI client is nil. Check apiKey initialization.")
         }
     }
 }
