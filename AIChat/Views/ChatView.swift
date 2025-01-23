@@ -22,6 +22,11 @@ struct ChatView: View {
             
             HStack {
                 TextField("Type a message", text: $chatViewModel.inputText)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
                 Button("Send") {
                     chatViewModel.sendMessage()
                     chatViewModel.inputText = ""
