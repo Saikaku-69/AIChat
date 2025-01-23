@@ -11,19 +11,11 @@ import Combine
 class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var inputText: String = ""
-    private var client: OpenAIAPICaller?
+    private var client: OpenAIAPICaller = OpenAIAPICaller()
     
-    init() {
-        if PlistManager.shared.getValue(forKey: "apiKey", fromPlist: "Config") is String {
-            client = OpenAIAPICaller()
-        } else {
-            print("Failed")
-            client = nil
-        }
-    }
     
     func sendMessage() {
-        guard !inputText.isEmpty, let client = client else { return }
+        guard !inputText.isEmpty else { return }
         
         let newMessage = Message(content: inputText, isUser: true)
         messages.append(newMessage)
@@ -38,7 +30,6 @@ class ChatViewModel: ObservableObject {
                     }
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
-                    // 可以在这里添加错误处理逻辑
                 }
                 self?.inputText = ""
             }

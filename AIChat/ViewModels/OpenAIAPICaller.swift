@@ -19,19 +19,31 @@ struct MessageBox: Decodable {
     let content: String
 }
 
+
+
 class OpenAIAPICaller {
-    private let apiKey: String =
-    "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"
+    private let apiKey: String
     
     private let baseURL = "https://api.openai.com/v1/chat/completions"
     
+    init() {
+        if let apiKey = PlistManager.shared.getValue(forKey: "apiKey", fromPlist: "Config") as? String {
+            self.apiKey = apiKey
+        } else {
+            print("PlistからapiKeyを取れませんでした。")
+            apiKey = ""
+        }
+    }
+    
     func fetchResponse(prompt: String, completion: @escaping (Result<ResponseModel, Error>) -> Void) {
+        
         guard let url = URL(string: baseURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
         }
         
         var request = URLRequest(url: url)
+        
         request.httpMethod = "POST"
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -63,13 +75,15 @@ class OpenAIAPICaller {
                 return
             }
             
+            let dataStringForDebug = String(data:data,encoding: .utf8)
+            print(dataStringForDebug ?? "jsonをString型に変換できませんでした。")
+            
             do {
                 let response = try JSONDecoder().decode(ResponseModel.self, from: data)
                 completion(.success(response))
             } catch {
                 completion(.failure(error))
             }
-            
         }
         task.resume()
     }
