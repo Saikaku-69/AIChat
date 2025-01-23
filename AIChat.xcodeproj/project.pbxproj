@@ -11,6 +11,14 @@
 		7F1DF79B2D4072F800FD4BDF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF79A2D4072F800FD4BDF /* ContentView.swift */; };
 		7F1DF79D2D4072FD00FD4BDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1DF79C2D4072FD00FD4BDF /* Assets.xcassets */; };
 		7F1DF7A02D4072FD00FD4BDF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1DF79F2D4072FD00FD4BDF /* Preview Assets.xcassets */; };
+		7F1DF7AD2D407BFB00FD4BDF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7AC2D407BFB00FD4BDF /* Message.swift */; };
+		7F1DF7AF2D407C6700FD4BDF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7AE2D407C6700FD4BDF /* ChatViewModel.swift */; };
+		7F1DF7B12D40838A00FD4BDF /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7B02D40838A00FD4BDF /* MessageView.swift */; };
+		7F1DF7B62D408BE100FD4BDF /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7B52D408BE100FD4BDF /* PlistManager.swift */; };
+		7F1DF7B82D40918500FD4BDF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7B72D40918500FD4BDF /* ChatView.swift */; };
+		7F1DF7BA2D409ACD00FD4BDF /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F1DF7B92D409ACD00FD4BDF /* Config.plist */; };
+		7F1DF7BC2D41FF8400FD4BDF /* OpenAIAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7BB2D41FF8400FD4BDF /* OpenAIAPICaller.swift */; };
+		7F1DF7BE2D420F3600FD4BDF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DF7BD2D420F3600FD4BDF /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,14 @@
 		7F1DF79A2D4072F800FD4BDF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7F1DF79C2D4072FD00FD4BDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F1DF79F2D4072FD00FD4BDF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7F1DF7AC2D407BFB00FD4BDF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		7F1DF7AE2D407C6700FD4BDF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		7F1DF7B02D40838A00FD4BDF /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		7F1DF7B52D408BE100FD4BDF /* PlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
+		7F1DF7B72D40918500FD4BDF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		7F1DF7B92D409ACD00FD4BDF /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		7F1DF7BB2D41FF8400FD4BDF /* OpenAIAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAPICaller.swift; sourceTree = "<group>"; };
+		7F1DF7BD2D420F3600FD4BDF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +67,14 @@
 		7F1DF7972D4072F800FD4BDF /* AIChat */ = {
 			isa = PBXGroup;
 			children = (
+				7F1DF7B42D408BCD00FD4BDF /* Manager */,
+				7F1DF7AB2D407BDD00FD4BDF /* Views */,
+				7F1DF7AA2D407BD400FD4BDF /* ViewModels */,
+				7F1DF7A92D407BC300FD4BDF /* Models */,
 				7F1DF7982D4072F800FD4BDF /* AIChatApp.swift */,
-				7F1DF79A2D4072F800FD4BDF /* ContentView.swift */,
 				7F1DF79C2D4072FD00FD4BDF /* Assets.xcassets */,
 				7F1DF79E2D4072FD00FD4BDF /* Preview Content */,
+				7F1DF7B92D409ACD00FD4BDF /* Config.plist */,
 			);
 			path = AIChat;
 			sourceTree = "<group>";
@@ -65,6 +85,42 @@
 				7F1DF79F2D4072FD00FD4BDF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7F1DF7A92D407BC300FD4BDF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7F1DF7AC2D407BFB00FD4BDF /* Message.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7F1DF7AA2D407BD400FD4BDF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7F1DF7AE2D407C6700FD4BDF /* ChatViewModel.swift */,
+				7F1DF7BB2D41FF8400FD4BDF /* OpenAIAPICaller.swift */,
+				7F1DF7BD2D420F3600FD4BDF /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7F1DF7AB2D407BDD00FD4BDF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F1DF7B02D40838A00FD4BDF /* MessageView.swift */,
+				7F1DF7B72D40918500FD4BDF /* ChatView.swift */,
+				7F1DF79A2D4072F800FD4BDF /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7F1DF7B42D408BCD00FD4BDF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F1DF7B52D408BE100FD4BDF /* PlistManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +139,8 @@
 			dependencies = (
 			);
 			name = AIChat;
+			packageProductDependencies = (
+			);
 			productName = AIChat;
 			productReference = 7F1DF7952D4072F800FD4BDF /* AIChat.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +169,8 @@
 				Base,
 			);
 			mainGroup = 7F1DF78C2D4072F800FD4BDF;
+			packageReferences = (
+			);
 			productRefGroup = 7F1DF7962D4072F800FD4BDF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F1DF7A02D4072FD00FD4BDF /* Preview Assets.xcassets in Resources */,
+				7F1DF7BA2D409ACD00FD4BDF /* Config.plist in Resources */,
 				7F1DF79D2D4072FD00FD4BDF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +198,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F1DF7B62D408BE100FD4BDF /* PlistManager.swift in Sources */,
+				7F1DF7BE2D420F3600FD4BDF /* HomeViewModel.swift in Sources */,
+				7F1DF7BC2D41FF8400FD4BDF /* OpenAIAPICaller.swift in Sources */,
+				7F1DF7AD2D407BFB00FD4BDF /* Message.swift in Sources */,
 				7F1DF79B2D4072F800FD4BDF /* ContentView.swift in Sources */,
+				7F1DF7AF2D407C6700FD4BDF /* ChatViewModel.swift in Sources */,
+				7F1DF7B82D40918500FD4BDF /* ChatView.swift in Sources */,
 				7F1DF7992D4072F800FD4BDF /* AIChatApp.swift in Sources */,
+				7F1DF7B12D40838A00FD4BDF /* MessageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
