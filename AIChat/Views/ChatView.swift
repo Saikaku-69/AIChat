@@ -23,7 +23,7 @@ struct ChatView: View {
             HStack {
                 TextField("Type a message", text: $chatViewModel.inputText)
                 Button("Send") {
-                    chatViewModel.sendMessage(chatViewModel.inputText)
+                    chatViewModel.sendMessage()
                     chatViewModel.inputText = ""
                 }
             }
