@@ -19,7 +19,7 @@ class ChatViewModel: ObservableObject {
         
         let newMessage = Message(content: inputText, isUser: true)
         messages.append(newMessage)
-        
+        self.inputText = ""
         client.fetchResponse(prompt: inputText) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -31,7 +31,6 @@ class ChatViewModel: ObservableObject {
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
                 }
-                self?.inputText = ""
             }
         }
     }

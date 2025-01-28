@@ -29,7 +29,6 @@ struct ChatView: View {
                     )
                 Button("Send") {
                     chatViewModel.sendMessage()
-                    chatViewModel.inputText = ""
                 }
             }
             .padding()
